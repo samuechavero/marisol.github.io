@@ -17,9 +17,10 @@ import { useHashLocation } from 'wouter/use-hash-location';
 
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'TU_SUPABASE_URL_AQUI';
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'TU_SUPABASE_ANON_KEY_AQUI';
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(
+  "https://iajhphnneblaldmxwgdz.supabase.co",
+  "sb_publishable_kYcACXloIsINMVp-ooe5Eg_Mc0ssq6B"
+);
 
 const queryClient = new QueryClient();
 
