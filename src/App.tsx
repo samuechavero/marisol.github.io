@@ -13,6 +13,7 @@ import {
   useLocation,
   Router as WouterRouter,
 } from 'wouter';
+import { useHashLocation } from 'wouter/use-hash-location';
 
 import { createClient } from '@supabase/supabase-js';
 
@@ -67,7 +68,7 @@ function Home() {
 
   const handleDownload = () => {
     const anchor = document.createElement('a');
-    anchor.href = './Marisol.pdf';
+    anchor.href = `${import.meta.env.BASE_URL}Marisol.pdf`;
     anchor.download = 'Marisol.pdf';
     anchor.target = '_blank';
     document.body.appendChild(anchor);
@@ -125,7 +126,7 @@ function Home() {
                 <div id="video" className="video-frame">
                   {videoPlaying ? (
                     <video 
-                      src="./video.mp4" 
+                      src={`${import.meta.env.BASE_URL}video.mp4`} 
                       controls 
                       autoPlay 
                       className="h-full w-full object-cover bg-black"
@@ -271,11 +272,10 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
 }
 
 function App() {
-  const base = import.meta.env.BASE_URL.startsWith('.') ? '' : import.meta.env.BASE_URL.replace(/\/$/, '');
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={base}>
+        <WouterRouter hook={useHashLocation}>
           <Router />
         </WouterRouter>
         <Toaster />
