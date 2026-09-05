@@ -67,7 +67,7 @@ function Home() {
 
   const handleDownload = () => {
     const anchor = document.createElement('a');
-    anchor.href = '/Marisol.pdf';
+    anchor.href = './Marisol.pdf';
     anchor.download = 'Marisol.pdf';
     anchor.target = '_blank';
     document.body.appendChild(anchor);
@@ -125,7 +125,7 @@ function Home() {
                 <div id="video" className="video-frame">
                   {videoPlaying ? (
                     <video 
-                      src="/video.mp4" 
+                      src="./video.mp4" 
                       controls 
                       autoPlay 
                       className="h-full w-full object-cover bg-black"
@@ -259,7 +259,7 @@ function Router() {
     <RoutedErrorBoundary>
       <Switch>
         <Route path="/" component={Home} />
-        <Route component={NotFound} />
+        <Route component={Home} />
       </Switch>
     </RoutedErrorBoundary>
   );
@@ -271,10 +271,11 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
 }
 
 function App() {
+  const base = import.meta.env.BASE_URL.startsWith('.') ? '' : import.meta.env.BASE_URL.replace(/\/$/, '');
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+        <WouterRouter base={base}>
           <Router />
         </WouterRouter>
         <Toaster />
