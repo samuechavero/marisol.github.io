@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Seguros con Marisol"
+description = "Landing page VSL para ayudar a la comunidad hispana en Estados Unidos a descubrir cómo proteger su salud y su dinero, con captura de datos, video y descarga de una guía gratuita."
+version = "1.0.0"
+id = "artifacts/seguros-con-marisol"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22242
+
+[services.development]
+run = "pnpm --filter @workspace/seguros-con-marisol run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/seguros-con-marisol", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/seguros-con-marisol/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22242"
+BASE_PATH = "/"
