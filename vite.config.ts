@@ -8,7 +8,7 @@ const rawPort = process.env.PORT;
 const port = rawPort ? Number(rawPort) : 5173;
 
 export default defineConfig({
-  base: '/marisol.github.io/',
+  base: './',
   plugins: [
     react(),
     tailwindcss(),

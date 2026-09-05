@@ -271,13 +271,17 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
   return <ErrorBoundary resetKey={location}>{children}</ErrorBoundary>;
 }
 
+function HashRouter({ children }: { children: ReactNode }) {
+  return <WouterRouter hook={useHashLocation}>{children}</WouterRouter>;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter hook={useHashLocation}>
+        <HashRouter>
           <Router />
-        </WouterRouter>
+        </HashRouter>
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
