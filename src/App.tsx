@@ -5,8 +5,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { ArrowDown, ArrowRight, Check, ChevronDown, Download, HeartHandshake, LockKeyhole, Menu, Play, ShieldCheck, Sparkles, X } from 'lucide-react';
-import logoPath from '@assets/Gemini_Generated_Image_oxa5psoxa5psoxa5_1787021728026.jpeg';
-import portraitPath from '@assets/488242162_641781785282928_2150815319422898206_n_1787021728025.jpg';
+import logoPath from '@/assets/logo.jpeg';
+import portraitPath from '@/assets/portrait.jpg';
 import {
   Route,
   Switch,
